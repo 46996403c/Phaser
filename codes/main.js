@@ -148,6 +148,26 @@ var Objetos;
     }(Sprite));
     Objetos.Pickup = Pickup;
 })(Objetos || (Objetos = {}));
+var Escenas;
+(function (Escenas) {
+    var Estado = (function (_super) {
+        __extends(Estado, _super);
+        function Estado(game) {
+            _super.call(this);
+            this.game = game;
+        }
+        Estado.prototype.preload = function () {
+            this.game.load.image('menu', 'assets/menu.png');
+            this.game.load.image('finJuego', 'assets/finJuego.png');
+            this.game.load.image('serpiente', 'assets/serpiente.png');
+            this.game.load.image('manzana', 'assets/manzana.png');
+            this.game.load.image('logo', 'assets/logo.png');
+            this.game.load.audio('battery', 'assets/audio/battery.wav');
+            this.game.load.spritesheet('animacionSerpiente', 'assets/animSerpiente.png', 78, 65);
+        };
+        return Estado;
+    }(Phaser.State));
+})(Escenas || (Escenas = {}));
 var SimpleGame = (function () {
     function SimpleGame() {
         this.game = new Phaser.Game(800, 581, Phaser.AUTO, 'gameDiv');

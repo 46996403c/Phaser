@@ -132,7 +132,24 @@ module Objetos {
         }
     }
 }
-
+module Escenas{
+    class Estado extends Phaser.State {
+        game: Snake;
+        constructor(game: Snake) {
+            super();
+            this.game = game;
+        }
+        preload() {
+            this.game.load.image('menu', 'assets/menu.png');
+            this.game.load.image('finJuego', 'assets/finJuego.png');
+            this.game.load.image('serpiente', 'assets/serpiente.png');
+            this.game.load.image('manzana', 'assets/manzana.png');
+            this.game.load.image('logo', 'assets/logo.png');
+            this.game.load.audio('battery', 'assets/audio/battery.wav');
+            this.game.load.spritesheet('animacionSerpiente', 'assets/animSerpiente.png', 78, 65);
+        }
+    }
+}
 class SimpleGame {
     game:Phaser.Game;
 
