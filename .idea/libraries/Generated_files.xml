@@ -3,10 +3,12 @@
     <properties>
       <sourceFilesUrls>
         <item url="file://$PROJECT_DIR$/main.js" />
+        <item url="file://$PROJECT_DIR$/prueba_main.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
       <root url="file://$PROJECT_DIR$/main.js" />
+      <root url="file://$PROJECT_DIR$/prueba_main.js" />
     </CLASSES>
     <SOURCES />
   </library>
