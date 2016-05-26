@@ -149,6 +149,22 @@ module Escenas{
             this.game.load.spritesheet('animacionSerpiente', 'assets/animSerpiente.png', 78, 65);
         }
     }
+    export class Menu extends Estado {
+        private battery: Phaser.Sound;
+        create() {
+            this.game.add.button(0, 0, 'menu', this.empezarJuego, this);
+            //añado el sonido de cuando se empieza el juego y lo llamo battery, sacado del mismo phaser
+            var battery = new Phaser.Sound(this.game, 0, 0, 'battery');
+            this.battery = this.game.add.audio('battery');
+            //dejo en segundo plano la carga del sonido para no colapsar el juego
+            this.game.sound.setDecodedCallback([ battery ], start, this);
+        }
+        empezarJuego() {
+            this.game.state.start('Game');
+            //cuando empieza el juego suena el sonido, este es solo la primera vez que se ejecuta
+            this.battery.play();
+        }
+    }
 }
 class SimpleGame {
     game:Phaser.Game;

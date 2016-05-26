@@ -167,6 +167,27 @@ var Escenas;
         };
         return Estado;
     }(Phaser.State));
+    var Menu = (function (_super) {
+        __extends(Menu, _super);
+        function Menu() {
+            _super.apply(this, arguments);
+        }
+        Menu.prototype.create = function () {
+            this.game.add.button(0, 0, 'menu', this.empezarJuego, this);
+            //añado el sonido de cuando se empieza el juego y lo llamo battery, sacado del mismo phaser
+            var battery = new Phaser.Sound(this.game, 0, 0, 'battery');
+            this.battery = this.game.add.audio('battery');
+            //dejo en segundo plano la carga del sonido para no colapsar el juego
+            this.game.sound.setDecodedCallback([battery], start, this);
+        };
+        Menu.prototype.empezarJuego = function () {
+            this.game.state.start('Game');
+            //cuando empieza el juego suena el sonido, este es solo la primera vez que se ejecuta
+            this.battery.play();
+        };
+        return Menu;
+    }(Estado));
+    Escenas.Menu = Menu;
 })(Escenas || (Escenas = {}));
 var SimpleGame = (function () {
     function SimpleGame() {
