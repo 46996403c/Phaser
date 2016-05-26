@@ -23,6 +23,17 @@ var mainState = (function (_super) {
     };
     return mainState;
 }(Phaser.State));
+var Objetos;
+(function (Objetos) {
+    var Sprite = (function (_super) {
+        __extends(Sprite, _super);
+        function Sprite() {
+            _super.apply(this, arguments);
+            this.tag = null;
+        }
+        return Sprite;
+    }(Phaser.Sprite));
+})(Objetos || (Objetos = {}));
 var SimpleGame = (function () {
     function SimpleGame() {
         this.game = new Phaser.Game(800, 581, Phaser.AUTO, 'gameDiv');

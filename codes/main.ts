@@ -21,6 +21,13 @@ class mainState extends Phaser.State {
     }
 }
 
+module Objetos {
+    class Sprite extends Phaser.Sprite {
+        game: Snake;
+        public tag: string = null;
+    }
+}
+
 class SimpleGame {
     game:Phaser.Game;
 
