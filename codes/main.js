@@ -1,7 +1,7 @@
 /**
  * Created by oscarXIII on 20/05/2016.
  */
-/// <reference path="Phaser/phaser.d.ts"/>
+/// <reference path="../Phaser/phaser.d.ts"/>
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }

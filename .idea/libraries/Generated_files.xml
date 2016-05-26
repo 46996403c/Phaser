@@ -7,7 +7,7 @@
       </sourceFilesUrls>
     </properties>
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/main.js" />
+      <root url="file://$PROJECT_DIR$/codes/main.js" />
       <root url="file://$PROJECT_DIR$/prueba_main.js" />
     </CLASSES>
     <SOURCES />

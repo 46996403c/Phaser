@@ -1,7 +1,7 @@
 /**
  * Created by oscarXIII on 20/05/2016.
  */
-/// <reference path="Phaser/phaser.d.ts"/>
+/// <reference path="../Phaser/phaser.d.ts"/>
 
 
 class mainState extends Phaser.State {
