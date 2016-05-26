@@ -124,7 +124,13 @@ module Objetos {
             }
         }
     }
-
+    export class Pickup extends Sprite {
+        public tag: string = 'recolectable';
+        public spawn() {
+            //de esta forma hacemos que aparezca aleaatoriamente la manzana en el mundo y que pueda ser cogida por la serpiente
+            this.reset(Math.floor(Math.random()*40)*15, Math.floor(Math.random()*30)*15);
+        }
+    }
 }
 
 class SimpleGame {

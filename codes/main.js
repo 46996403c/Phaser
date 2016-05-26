@@ -134,6 +134,19 @@ var Objetos;
         return Snake;
     }(Sprite));
     Objetos.Snake = Snake;
+    var Pickup = (function (_super) {
+        __extends(Pickup, _super);
+        function Pickup() {
+            _super.apply(this, arguments);
+            this.tag = 'recolectable';
+        }
+        Pickup.prototype.spawn = function () {
+            //de esta forma hacemos que aparezca aleaatoriamente la manzana en el mundo y que pueda ser cogida por la serpiente
+            this.reset(Math.floor(Math.random() * 40) * 15, Math.floor(Math.random() * 30) * 15);
+        };
+        return Pickup;
+    }(Sprite));
+    Objetos.Pickup = Pickup;
 })(Objetos || (Objetos = {}));
 var SimpleGame = (function () {
     function SimpleGame() {
