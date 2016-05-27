@@ -253,17 +253,17 @@ module Escenas{
         }
     }
 }
-class SimpleGame {
-    game:Phaser.Game;
-
+class Snake extends Phaser.Game {
+    public score: any = 0;
+    public speed: any = 0;
     constructor() {
-        this.game = new Phaser.Game(800, 581, Phaser.AUTO, 'gameDiv');
-
-        this.game.state.add('main', mainState);
-        this.game.state.start('main');
+        super(600, 450, Phaser.AUTO, 'gameDiv');
+        this.state.add('Menu', new Escenas.Menu(this), true);
+        this.state.add('Game', new Escenas.Game(this));
+        this.state.add('FinJuego', new Escenas.FinJuego(this));
     }
 }
 
 window.onload = () => {
-    var game = new SimpleGame();
+    var gameSnake = new Snake();
 };

@@ -283,15 +283,19 @@ var Escenas;
     }(Estado));
     Escenas.FinJuego = FinJuego;
 })(Escenas || (Escenas = {}));
-var SimpleGame = (function () {
-    function SimpleGame() {
-        this.game = new Phaser.Game(800, 581, Phaser.AUTO, 'gameDiv');
-        this.game.state.add('main', mainState);
-        this.game.state.start('main');
+var Snake = (function (_super) {
+    __extends(Snake, _super);
+    function Snake() {
+        _super.call(this, 600, 450, Phaser.AUTO, 'gameDiv');
+        this.score = 0;
+        this.speed = 0;
+        this.state.add('Menu', new Escenas.Menu(this), true);
+        this.state.add('Game', new Escenas.Game(this));
+        this.state.add('FinJuego', new Escenas.FinJuego(this));
     }
-    return SimpleGame;
-}());
+    return Snake;
+}(Phaser.Game));
 window.onload = function () {
-    var game = new SimpleGame();
+    var gameSnake = new Snake();
 };
 //# sourceMappingURL=main.js.map
