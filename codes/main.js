@@ -1,28 +1,12 @@
-/**
- * Created by oscarXIII on 20/05/2016.
- */
-/// <reference path="../Phaser/phaser.d.ts"/>
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var mainState = (function (_super) {
-    __extends(mainState, _super);
-    function mainState() {
-        _super.apply(this, arguments);
-    }
-    mainState.prototype.preload = function () {
-        _super.prototype.preload.call(this);
-    };
-    mainState.prototype.create = function () {
-        _super.prototype.create.call(this);
-    };
-    mainState.prototype.update = function () {
-        _super.prototype.update.call(this);
-    };
-    return mainState;
-}(Phaser.State));
+/**
+ * Created by oscarXIII on 20/05/2016.
+ */
+/// <reference path="../Phaser/phaser.d.ts"/>
 var Objetos;
 (function (Objetos) {
     var Sprite = (function (_super) {
@@ -286,9 +270,12 @@ var Escenas;
 var Snake = (function (_super) {
     __extends(Snake, _super);
     function Snake() {
+        //tamaño de la ventana
         _super.call(this, 600, 450, Phaser.AUTO, 'gameDiv');
+        //variables de puntuacion y velocidad, las cuales al empezar le juego tienen que ser 0
         this.score = 0;
         this.speed = 0;
+        //Escenas del juego las cuales se ven segun el estado del mismo
         this.state.add('Menu', new Escenas.Menu(this), true);
         this.state.add('Game', new Escenas.Game(this));
         this.state.add('FinJuego', new Escenas.FinJuego(this));

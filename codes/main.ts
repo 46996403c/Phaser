@@ -2,25 +2,6 @@
  * Created by oscarXIII on 20/05/2016.
  */
 /// <reference path="../Phaser/phaser.d.ts"/>
-
-
-class mainState extends Phaser.State {
-    game: Phaser.Game;
-
-    preload():void {
-        super.preload();
-    }
-
-    create():void {
-        super.create();
-
-    }
-
-    update():void {
-        super.update();
-    }
-}
-
 module Objetos {
     class Sprite extends Phaser.Sprite {
         game: Snake;
@@ -254,16 +235,18 @@ module Escenas{
     }
 }
 class Snake extends Phaser.Game {
+    //variables de puntuacion y velocidad, las cuales al empezar le juego tienen que ser 0
     public score: any = 0;
     public speed: any = 0;
     constructor() {
+        //tamaño de la ventana
         super(600, 450, Phaser.AUTO, 'gameDiv');
+        //Escenas del juego las cuales se ven segun el estado del mismo
         this.state.add('Menu', new Escenas.Menu(this), true);
         this.state.add('Game', new Escenas.Game(this));
         this.state.add('FinJuego', new Escenas.FinJuego(this));
     }
 }
-
 window.onload = () => {
     var gameSnake = new Snake();
 };
