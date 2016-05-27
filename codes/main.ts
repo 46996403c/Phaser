@@ -218,6 +218,40 @@ module Escenas{
             this.game.speed = 0;
         }
     }
+    export class FinJuego extends Estado {
+        private battery: Phaser.Sound;
+        create() {
+            this.game.add.button(0, 0, 'finJuego', this.empezarJuego, this);
+            //Defino un estilo para el texto de puntuacion que aparece en la pantalla final
+            var estiloPuntuacion = {
+                font: 'bold 20px sans-serif',
+                fill: '#46c0f9',
+                align: 'center'
+            };
+            //creo la variable del texto y le aplico un teween, como en la pantalla del juego
+            var textoPuntosFinales = this.game.add.text(235, 350, 'PUNTOS', estiloPuntuacion);
+            textoPuntosFinales.alpha = 0;
+            this.game.add.tween(textoPuntosFinales).to({ alpha: 1 }, 2000, Phaser.Easing.Linear.None, true, 0, 1000, true);
+            //Defino inline un estilo para la puntuacion que aparece en la pantalla final, ademas le añado el efecto del tween
+            var puntosFinales = this.game.add.text(350, 348, this.game.score.toString(), {
+                    font: 'bold 20px sans-serif',
+                    fill: '#fff',
+                    align: 'center'
+                }
+            );
+            puntosFinales.alpha = 0;
+            this.game.add.tween(puntosFinales).to({ alpha: 1 }, 2000, Phaser.Easing.Linear.None, true, 0, 1000, true);
+            //cargo el sonido para cuando se empiece de nuevo el juego, se ejecute el sonido como al principio
+            var battery = new Phaser.Sound(this.game, 0, 0, 'battery');
+            this.battery = this.game.add.audio('battery');
+            this.game.sound.setDecodedCallback([ battery ], start, this);
+        }
+        empezarJuego() {
+            //al empezar de nuevo el juego, se escuchara el sonudo como en la primera pantalla
+            this.game.state.start('Game');
+            this.battery.play();
+        }
+    }
 }
 class SimpleGame {
     game:Phaser.Game;
