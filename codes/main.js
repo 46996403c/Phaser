@@ -188,6 +188,62 @@ var Escenas;
         return Menu;
     }(Estado));
     Escenas.Menu = Menu;
+    var Game = (function (_super) {
+        __extends(Game, _super);
+        function Game() {
+            _super.apply(this, arguments);
+        }
+        Game.prototype.create = function () {
+            this.reset();
+            this.game.stage.backgroundColor = '#061f27';
+            //animacion de la serpiente arriba a la derecha
+            this.animacionSerpiente = this.add.sprite(0, 0, 'animacionSerpiente');
+            this.animacionSerpiente.animations.add('mov', [0, 1], 2, true);
+            this.animacionSerpiente.animations.play('mov');
+            //carga el objeto de serpiente en el juego
+            var serpiente = new Objetos.Snake(this.game, -100, -100, 'serpiente');
+            this.serpiente = this.world.add(serpiente);
+            //carga el objeto dela manzana en el juego
+            var pickup = new Objetos.Pickup(this.game, 0, 0, 'manzana');
+            pickup.spawn();
+            this.pickup = this.world.add(pickup);
+            //defino un estilo para la puntuacion
+            var estiloPuntuacion = {
+                font: 'bold 14px sans-serif',
+                fill: '#46c0f9',
+                align: 'center'
+            };
+            //cargo el texto de puntuacion que se va mostrnando en el juego
+            var textoPuntos = this.game.add.text(40, 20, 'PUNTOS', estiloPuntuacion);
+            textoPuntos.alpha = 0;
+            //con el tween hago que se anime el texto apareceiendo y desapareciendo
+            this.game.add.tween(textoPuntos).to({ alpha: 1 }, 2000, Phaser.Easing.Linear.None, true, 0, 1000, true);
+            //cargo la puntuacion que se va mostrnando en el juego
+            var puntosGanados = this.puntuacion = this.game.add.text(110, 20, this.game.score.toString(), estiloPuntuacion);
+            puntosGanados.alpha = 0;
+            //con el tween hago que se anime la puntuacion apareceiendo y desapareciendo
+            this.game.add.tween(puntosGanados).to({ alpha: 1 }, 2000, Phaser.Easing.Linear.None, true, 0, 1000, true);
+        };
+        Game.prototype.update = function () {
+            for (var i = 0; i < this.serpiente.casillaSerpiente.length; i++) {
+                if (this.serpiente.casillaSerpiente[i].x == this.pickup.x && this.serpiente.casillaSerpiente[i].y == this.pickup.y) {
+                    if (this.pickup) {
+                        this.pickup.spawn();
+                        this.game.score++;
+                        this.puntuacion.text = this.game.score.toString();
+                        this.serpiente.nuevoObjeto = true;
+                    }
+                }
+            }
+        };
+        Game.prototype.reset = function () {
+            //con el reset se pòne a cero la puntuacion y la velocidad de la serpiente
+            this.game.score = 0;
+            this.game.speed = 0;
+        };
+        return Game;
+    }(Estado));
+    Escenas.Game = Game;
 })(Escenas || (Escenas = {}));
 var SimpleGame = (function () {
     function SimpleGame() {
